@@ -10,7 +10,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className='text-3xl font-bold underline'>Hello world! </h1>
+        <h1 className='font-kumbh-sans text-3xl text-h1 underline'>
+          Hello world!{' '}
+        </h1>
       </main>
     </div>
   );
