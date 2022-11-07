@@ -14,9 +14,9 @@ export default function FontsList() {
   const { color, setColor } = useContext(StyleContext);
 
   const colorOptions: StyleItemTypes[] = [
-    { id: 1, value: 'text-red' },
-    { id: 2, value: 'text-cyan' },
-    { id: 3, value: 'text-violet' },
+    { id: 1, value: 'red' },
+    { id: 2, value: 'cyan' },
+    { id: 3, value: 'violet' },
   ];
 
   return (

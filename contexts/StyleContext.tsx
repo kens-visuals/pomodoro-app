@@ -9,14 +9,15 @@ interface StyleContextTypes {
 }
 
 export const StyleContext = createContext<StyleContextTypes>({
-  color: 'text-red',
+  color: 'red',
   setColor: () => null,
   font: 'font-kumbh-sans',
   setFont: () => null,
 });
 
 export function StyleProvider({ children }: { children: JSX.Element }) {
-  const [color, setColor] = useState<string>('text-red');
+  const [color, setColor] = useState<string>('red');
+
   const [font, setFont] = useState<string>('font-kumbh-sans');
 
   const value: StyleContextTypes = useMemo(
