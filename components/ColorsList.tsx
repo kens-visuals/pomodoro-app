@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { RadioGroup } from '@headlessui/react';
 
+// Context
 import { StyleContext } from '../contexts/StyleContext';
 
 // Interfaces
@@ -23,7 +24,7 @@ export default function FontsList() {
       {colorOptions.map(({ id, value }) => (
         <RadioGroup.Option value={value} key={id}>
           {({ checked }) => (
-            <span className={`${checked ? 'bg-red text-secondary' : ''}`}>
+            <span className={`${checked && 'bg-red text-secondary'}`}>
               {value}
             </span>
           )}
