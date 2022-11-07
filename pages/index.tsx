@@ -1,17 +1,23 @@
-import Head from 'next/head';
 import { useContext } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
 
 // Components
 import Themes from '../components/Themes';
+import Toggler from '../components/Toggler';
+
+// Assets
+import logo from '../public/assets/logo.svg';
 
 export default function Home() {
   const { color, font } = useContext(StyleContext);
+
   return (
     <div
-      className={`grid min-h-screen grid-rows-[1fr_auto] items-center justify-center bg-primary text-tertiary ${color} ${font}`}
+      className={`grid min-h-screen grid-rows-[1fr_auto] justify-center bg-primary text-${color} ${font}`}
     >
       <Head>
         <title>Create Next App</title>
@@ -19,8 +25,10 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main>
-        <h1 className='text-3xl text-h1 '>Hello world!</h1>
+      <main className='my-8 mx-auto flex w-[94%] max-w-5xl flex-col items-center'>
+        <Image src={logo} alt='pomodoro' />
+
+        <Toggler />
 
         <Themes />
       </main>
