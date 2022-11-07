@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { StyleContext } from '../contexts/StyleContext';
 
 // Components
-import StyleList from '../components/Themes';
+import Themes from '../components/Themes';
 
 export default function Home() {
   const { color, font } = useContext(StyleContext);
@@ -22,7 +22,7 @@ export default function Home() {
       <main>
         <h1 className='text-3xl text-h1 '>Hello world!</h1>
 
-        <StyleList />
+        <Themes />
       </main>
 
       <footer className='text-center'>This is footer</footer>
