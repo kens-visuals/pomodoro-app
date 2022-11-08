@@ -6,18 +6,19 @@ import Image from 'next/image';
 import { StyleContext } from '../contexts/StyleContext';
 
 // Components
-import Themes from '../components/Themes';
 import Toggler from '../components/Toggler';
+import Timer from '../components/Timer';
+import Settings from '../components/Setting';
 
 // Assets
 import logo from '../public/assets/logo.svg';
 
 export default function Home() {
-  const { color, font } = useContext(StyleContext);
+  const { font } = useContext(StyleContext);
 
   return (
     <div
-      className={`grid min-h-screen grid-rows-[1fr_auto] justify-center bg-primary text-${color} ${font}`}
+      className={`grid min-h-screen w-full grid-rows-[1fr_auto] justify-center bg-primary ${font}`}
     >
       <Head>
         <title>Create Next App</title>
@@ -25,12 +26,14 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='my-8 mx-auto flex w-[94%] max-w-5xl flex-col items-center'>
+      <main className='my-8 mx-auto flex w-[88vw] max-w-lg flex-col items-center'>
         <Image src={logo} alt='pomodoro' />
 
         <Toggler />
 
-        <Themes />
+        <Timer />
+
+        <Settings />
       </main>
 
       <footer className='text-center'>This is footer</footer>

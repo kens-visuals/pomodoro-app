@@ -17,6 +17,12 @@ module.exports = {
         cyan: '#70F3F8',
         violet: '#D881F8',
       },
+      backgroundImage: {
+        'primary-gradient': 'linear-gradient(315deg, #2E325A 0%, #0E112A 100%)',
+      },
+      boxShadow: {
+        'primary-shadow': '-50px -50px 100px #272C5A, 50px 50px 100px #121530',
+      },
       fontFamily: {
         'kumbh-sans': ['Kumbh Sans', 'sans-serif'],
         'roboto-slab': ['Roboto Slab', 'serif'],
