@@ -28,10 +28,10 @@ export default function Toggler() {
     <RadioGroup
       value={timeOption}
       onChange={setTimeOption}
-      className='m-11 grid w-full grid-cols-3 items-center justify-center gap-4 rounded-full bg-primary-dark p-2 text-body-2'
+      className='m-11 grid w-full grid-cols-3 items-center justify-between gap-4 rounded-full bg-primary-dark p-2 text-body-2 tracking-wide'
     >
       {timeOptions.map(({ id, value }) => (
-        <RadioGroup.Option value={value} key={id} className='w-full space-x-10'>
+        <RadioGroup.Option value={value} key={id} className='w-full'>
           {({ checked }) => (
             <span
               className={`flex w-full items-center justify-center rounded-full py-4 text-center  ${
