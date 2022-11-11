@@ -3,11 +3,14 @@ import type { AppProps } from 'next/app';
 
 // Context
 import { StyleProvider } from '../contexts/StyleContext';
+import { TimerProvider } from '../contexts/TimerContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <StyleProvider>
-      <Component {...pageProps} />
+      <TimerProvider>
+        <Component {...pageProps} />
+      </TimerProvider>
     </StyleProvider>
   );
 }
