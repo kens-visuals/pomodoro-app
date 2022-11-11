@@ -6,9 +6,9 @@ import Image from 'next/image';
 import { StyleContext } from '../contexts/StyleContext';
 
 // Components
-import Toggler from '../components/Toggler';
+import TimerToggler from '../components/TimerToggler';
 import Timer from '../components/Timer';
-import Settings from '../components/Setting';
+import Settings from '../components/Settings';
 
 // Assets
 import logo from '../public/assets/logo.svg';
@@ -29,7 +29,7 @@ export default function Home() {
       <main className='my-8 mx-auto flex w-[88vw] max-w-lg flex-col items-center'>
         <Image src={logo} alt='pomodoro' />
 
-        <Toggler />
+        <TimerToggler />
 
         <Timer />
 
