@@ -4,7 +4,7 @@ import ColorsList from './ColorsList';
 
 export default function Themes() {
   return (
-    <div>
+    <div className='p-6'>
       <FontsList />
       <ColorsList />
     </div>
