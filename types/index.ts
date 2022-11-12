@@ -6,6 +6,7 @@ export interface StyleItemTypes {
 export interface TimeOptionTypes {
   id?: number;
   name: string;
+  valueName?: string;
   value: string | number;
   min?: number;
   max?: number;

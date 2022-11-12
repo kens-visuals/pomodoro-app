@@ -6,8 +6,9 @@ import Image from 'next/image';
 import { StyleContext } from '../contexts/StyleContext';
 
 // Components
-import Themes from './Themes';
 import TimeInputs from './TimeInputs';
+import FontsList from './FontsList';
+import ColorsList from './ColorsList';
 
 // Assets
 import settings from '../public/assets/icon-settings.svg';
@@ -44,9 +45,11 @@ export default function Settings() {
 
             <div className='h-0.5 w-full bg-secondary-dark' />
 
-            <TimeInputs />
-
-            <Themes />
+            <div className='p-6'>
+              <TimeInputs />
+              <FontsList />
+              <ColorsList />
+            </div>
 
             <button
               type='button'
