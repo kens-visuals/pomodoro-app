@@ -44,7 +44,7 @@ export default function TimerToggler() {
           {({ checked }) => (
             <button
               type='button'
-              className={`flex w-full items-center justify-center rounded-full py-4 text-center  ${
+              className={`flex w-full items-center justify-center rounded-full py-4 text-center md:text-body-1 ${
                 checked ? `${activeColor} text-primary-dark` : `text-tertiary`
               }`}
             >

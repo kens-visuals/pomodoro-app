@@ -26,7 +26,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='my-8 mx-auto flex w-[88vw] max-w-lg flex-col items-center'>
+      <main className='my-8 mx-auto flex w-[88vw] max-w-lg flex-col items-center md:my-12 md:justify-between'>
         <Image src={logo} alt='pomodoro' />
 
         <TimerToggler />

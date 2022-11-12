@@ -18,13 +18,13 @@ export default function TimerDisplay({
     <div className='flex flex-col items-center justify-center'>
       <button
         type='button'
-        className='ml-4 text-h3 uppercase text-tertiary '
+        className='ml-4 text-h3 uppercase text-tertiary md:text-h2'
         onClick={handlePauseClick}
       >
         {isPlaying ? 'Pause' : 'Start'}
       </button>
       <span
-        className='my-4 text-[5rem] text-tertiary'
+        className='my-4 text-[5rem] text-tertiary md:text-[8rem]'
         role='timer'
         aria-live='assertive'
       >
@@ -33,7 +33,7 @@ export default function TimerDisplay({
 
       <button
         type='button'
-        className='ml-4 text-h3 uppercase text-red'
+        className='ml-4 text-h3 uppercase text-red md:text-h2'
         onClick={handleResetClick}
       >
         Reset

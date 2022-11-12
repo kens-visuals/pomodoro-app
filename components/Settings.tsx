@@ -20,7 +20,7 @@ export default function Settings() {
 
   return (
     <>
-      <button type='button' onClick={() => setIsOpen(true)}>
+      <button type='button' onClick={() => setIsOpen(true)} className='mt-8'>
         <Image src={settings} alt='settings' />
       </button>
 
