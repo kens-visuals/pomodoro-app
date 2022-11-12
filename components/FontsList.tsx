@@ -4,11 +4,8 @@ import { RadioGroup } from '@headlessui/react';
 // Context
 import { StyleContext } from '../contexts/StyleContext';
 
-// Interfaces
-interface StyleItemTypes {
-  id: number;
-  value: string;
-}
+// Types
+import { StyleItemTypes } from '../types/index';
 
 export default function FontsList() {
   const { font, setFont } = useContext(StyleContext);
@@ -31,7 +28,8 @@ export default function FontsList() {
         {fontOptions.map(({ id, value }) => (
           <RadioGroup.Option value={value} key={id}>
             {({ checked }) => (
-              <span
+              <button
+                type='button'
                 className={`flex h-10 w-10 items-center justify-center rounded-full ${value} ${
                   checked
                     ? 'bg-primary-dark text-tertiary'
@@ -39,7 +37,7 @@ export default function FontsList() {
                 }`}
               >
                 Aa
-              </span>
+              </button>
             )}
           </RadioGroup.Option>
         ))}

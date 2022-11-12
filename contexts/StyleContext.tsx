@@ -1,12 +1,7 @@
 import { useState, createContext, useMemo } from 'react';
 
-// Interfaces
-interface StyleContextTypes {
-  color: string;
-  setColor: (color: string) => void;
-  font: string;
-  setFont: (font: string) => void;
-}
+// Types
+import { StyleContextTypes } from '../types/index';
 
 export const StyleContext = createContext<StyleContextTypes>({
   color: 'red',

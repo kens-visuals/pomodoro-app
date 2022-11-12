@@ -1,15 +1,16 @@
+import Image from 'next/image';
 import { useContext, ChangeEvent } from 'react';
 
 // Contexts
 import { TimerContext } from '../contexts/TimerContext';
 import { StyleContext } from '../contexts/StyleContext';
 
-interface TimeOptionTypes {
-  name: string;
-  value: string | number;
-  min: number;
-  max: number;
-}
+// Assets
+import arrowUp from '../public/assets/icon-arrow-up.svg';
+import arrowDown from '../public/assets/icon-arrow-down.svg';
+
+// Types
+import { TimeOptionTypes } from '../types/index';
 
 export default function TimeInputs() {
   const { font } = useContext(StyleContext);
@@ -31,9 +32,10 @@ export default function TimeInputs() {
     <label
       key={name}
       htmlFor='timer-duration'
-      className={`flex items-center justify-between text-primary/50 md:flex-col md:items-start md:gap-2 ${font}`}
+      className={`relative flex items-center justify-between text-primary/50 md:flex-col md:items-start md:gap-2 ${font}`}
     >
       {name}
+
       <input
         min={min}
         max={max}
@@ -42,8 +44,14 @@ export default function TimeInputs() {
         id='timer-duration'
         value={value}
         onChange={(e) => handleTimerDurationChange(e)}
-        className='w-36 appearance-none rounded-lg bg-secondary-dark p-2'
+        className='relative w-36 appearance-none rounded-lg bg-secondary-dark p-2'
       />
+      <button type='button' className='absolute right-0'>
+        <Image src={arrowUp} alt='' />
+      </button>
+      <button type='button' className='absolute right-0'>
+        <Image src={arrowDown} alt='' />
+      </button>
     </label>
   ));
 

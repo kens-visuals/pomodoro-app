@@ -6,11 +6,11 @@ import { TimerContext } from '../contexts/TimerContext';
 // Utils
 import { convertSecondsToMinutes } from '../utils/helpers';
 
-interface TimerDisplayProps {
+export default function TimerDisplay({
+  remainingTime,
+}: {
   remainingTime: number;
-}
-
-export default function TimerDisplay({ remainingTime }: TimerDisplayProps) {
+}) {
   const { isPlaying, handlePauseClick, handleResetClick } =
     useContext(TimerContext);
 

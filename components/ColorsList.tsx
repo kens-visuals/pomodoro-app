@@ -8,11 +8,8 @@ import { StyleContext } from '../contexts/StyleContext';
 // Assets
 import checkmark from '../public/assets/icon-checkmark.svg';
 
-// Interfaces
-interface StyleItemTypes {
-  id: number;
-  value: string;
-}
+// Types
+import { StyleItemTypes } from '../types/index';
 
 export default function FontsList() {
   const { color, setColor } = useContext(StyleContext);
@@ -35,7 +32,8 @@ export default function FontsList() {
         {colorOptions.map(({ id, value }) => (
           <RadioGroup.Option value={value} key={id}>
             {({ checked }) => (
-              <div
+              <button
+                type='button'
                 className={`flex h-10 w-10 items-center justify-center rounded-full bg-${value}`}
               >
                 {checked && (
@@ -46,7 +44,7 @@ export default function FontsList() {
                     width={25}
                   />
                 )}
-              </div>
+              </button>
             )}
           </RadioGroup.Option>
         ))}

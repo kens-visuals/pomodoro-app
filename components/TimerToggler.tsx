@@ -5,11 +5,8 @@ import { RadioGroup } from '@headlessui/react';
 import { StyleContext } from '../contexts/StyleContext';
 import { TimerContext } from '../contexts/TimerContext';
 
-interface TimeOptionTypes {
-  id: number;
-  name: string;
-  value: string;
-}
+// Types
+import { TimeOptionTypes } from '../types/index';
 
 export default function TimerToggler() {
   const { color } = useContext(StyleContext);

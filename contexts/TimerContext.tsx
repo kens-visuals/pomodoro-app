@@ -1,23 +1,7 @@
 import { useState, createContext, useMemo } from 'react';
 
-// Interfaces
-interface TimerDuration {
-  [key: string]: string | number;
-}
-
-interface TimerContextTypes {
-  timerDuration: TimerDuration;
-  setTimerDuration: (duration: any) => void;
-  timeOption: string;
-  setTimeOption: (timeOption: string) => void;
-  isPlaying: boolean;
-  resetKey: number;
-  setResetKey: (resetKey: any) => void;
-  handleStopClick: () => void;
-  handlePauseClick: () => void;
-  handleResetClick: () => void;
-  handleOnComplete: () => void;
-}
+// Types
+import { TimerDuration, TimerContextTypes } from '../types/index';
 
 export const TimerContext = createContext<TimerContextTypes>({
   timerDuration: {
