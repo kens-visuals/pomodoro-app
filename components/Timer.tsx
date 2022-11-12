@@ -24,7 +24,8 @@ export default function Timer() {
 
   return (
     <div className='my-12 flex aspect-square w-full items-center justify-center rounded-full bg-primary-gradient p-4 shadow-primary-shadow'>
-      <div className='flex h-full w-full items-center justify-center rounded-full bg-primary-dark'>
+      {/* Mobile Version */}
+      <div className='flex h-full w-full items-center justify-center rounded-full bg-primary-dark md:hidden'>
         <CountdownCircleTimer
           key={resetKey}
           rotation='counterclockwise'
@@ -33,6 +34,24 @@ export default function Timer() {
           colors={`#${activeColor}`}
           trailColor='#161932'
           size={300}
+          onComplete={handleOnComplete}
+        >
+          {({ remainingTime }) => (
+            <TimerDisplay remainingTime={remainingTime} />
+          )}
+        </CountdownCircleTimer>
+      </div>
+
+      {/* Tablet and Desktop Version */}
+      <div className='hidden md:flex md:h-full md:w-full md:items-center md:justify-center md:rounded-full md:bg-primary-dark'>
+        <CountdownCircleTimer
+          key={resetKey}
+          rotation='counterclockwise'
+          isPlaying={isPlaying}
+          duration={convertedDuration}
+          colors={`#${activeColor}`}
+          trailColor='#161932'
+          size={450}
           onComplete={handleOnComplete}
         >
           {({ remainingTime }) => (
