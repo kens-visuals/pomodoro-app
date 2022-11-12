@@ -8,8 +8,6 @@ export interface TimeOptionTypes {
   name: string;
   valueName?: string;
   value: string | number;
-  min?: number;
-  max?: number;
 }
 
 export interface StyleContextTypes {

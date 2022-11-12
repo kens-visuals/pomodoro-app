@@ -1,13 +1,8 @@
-import Image from 'next/image';
 import { useContext, ChangeEvent } from 'react';
 
 // Contexts
 import { TimerContext } from '../contexts/TimerContext';
 import { StyleContext } from '../contexts/StyleContext';
-
-// Assets
-import arrowUp from '../public/assets/icon-arrow-up.svg';
-import arrowDown from '../public/assets/icon-arrow-down.svg';
 
 // Types
 import { TimeOptionTypes } from '../types/index';
@@ -16,19 +11,36 @@ export default function TimeInputs() {
   const { font } = useContext(StyleContext);
   const { timerDuration, setTimerDuration } = useContext(TimerContext);
 
-  const handleTimerDurationChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setTimerDuration((prevState: any) => ({
+  const handleTimerDurationChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    const result: number = +value.replace(/\D/g, '');
+
+    setTimerDuration((prevState: TimeOptionTypes) => ({
       ...prevState,
-      [e.target.name]: +e.target.value,
+      [name]: result,
     }));
+  };
 
   const timeOptions: TimeOptionTypes[] = [
-    { name: 'pomodoro', value: timerDuration.pomodoro, min: 5, max: 90 },
-    { name: 'short break', value: timerDuration.shortBreak, min: 1, max: 30 },
-    { name: 'long break', value: timerDuration.longBreak, min: 5, max: 60 },
+    {
+      name: 'pomodoro',
+      valueName: 'pomodoro',
+      value: timerDuration.pomodoro,
+    },
+    {
+      name: 'short break',
+      valueName: 'shortBreak',
+      value: timerDuration.shortBreak,
+    },
+    {
+      name: 'long break',
+      valueName: 'longBreak',
+      value: timerDuration.longBreak,
+    },
   ];
 
-  const inputsDisplay = timeOptions.map(({ name, value, min, max }) => (
+  const inputsDisplay = timeOptions.map(({ name, valueName, value }) => (
     <label
       key={name}
       htmlFor='timer-duration'
@@ -37,26 +49,19 @@ export default function TimeInputs() {
       {name}
 
       <input
-        min={min}
-        max={max}
-        type='number'
-        name={name}
+        type='text'
+        name={valueName}
+        pattern='[0-9]*'
         id='timer-duration'
         value={value}
         onChange={(e) => handleTimerDurationChange(e)}
         className='relative w-36 appearance-none rounded-lg bg-secondary-dark p-2'
       />
-      <button type='button' className='absolute right-0'>
-        <Image src={arrowUp} alt='' />
-      </button>
-      <button type='button' className='absolute right-0'>
-        <Image src={arrowDown} alt='' />
-      </button>
     </label>
   ));
 
   return (
-    <form className=' space-y-4 p-6 md:flex md:items-center md:gap-4 md:space-y-0'>
+    <form className='space-y-4 py-6 md:flex md:items-center md:gap-4 md:space-y-0'>
       {inputsDisplay}
     </form>
   );
