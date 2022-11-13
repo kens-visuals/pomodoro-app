@@ -49,7 +49,7 @@ export default function TimeInputs() {
       {name}
 
       <input
-        type='text'
+        type='number'
         name={valueName}
         pattern='[0-9]*'
         id='timer-duration'

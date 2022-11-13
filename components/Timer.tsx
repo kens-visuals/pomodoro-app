@@ -23,7 +23,7 @@ export default function Timer() {
   const convertedDuration = convertMinutesToSeconds(+timerDuration[timeOption]);
 
   return (
-    <div className='my-12 flex aspect-square w-full items-center justify-center rounded-full bg-primary-gradient p-4 shadow-primary-shadow'>
+    <div className='my-12 flex aspect-square items-center justify-center rounded-full bg-primary-gradient p-4 shadow-primary-shadow md:p-6'>
       {/* Mobile Version */}
       <div className='flex h-full w-full items-center justify-center rounded-full bg-primary-dark md:hidden'>
         <CountdownCircleTimer
