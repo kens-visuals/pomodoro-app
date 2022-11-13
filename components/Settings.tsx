@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { Dialog } from '@headlessui/react';
+import useSound from 'use-sound';
 import Image from 'next/image';
 
 // Context
@@ -17,10 +18,22 @@ import close from '../public/assets/icon-close.svg';
 export default function Settings() {
   const { font } = useContext(StyleContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [playOnSfx] = useSound('/sounds/switch-on.mp3');
+  const [playOffSfx] = useSound('/sounds/switch-off.mp3');
+
+  const handelOpen = () => {
+    playOnSfx();
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    playOffSfx();
+    setIsOpen(false);
+  };
 
   return (
     <>
-      <button type='button' onClick={() => setIsOpen(true)} className='mt-8'>
+      <button type='button' onClick={handelOpen} className='mt-8'>
         <Image src={settings} alt='settings' />
       </button>
 
@@ -38,7 +51,7 @@ export default function Settings() {
           <Dialog.Panel className='relative mx-auto w-[88vw] max-w-lg rounded-3xl bg-white pb-8'>
             <div className='flex items-center justify-between p-6'>
               <Dialog.Title className='text-h2'>Setting</Dialog.Title>
-              <button type='button' onClick={() => setIsOpen(false)}>
+              <button type='button' onClick={handleClose}>
                 <Image src={close} alt='close' />
               </button>
             </div>
