@@ -9,6 +9,7 @@ import { StyleContext } from '../contexts/StyleContext';
 import TimerToggler from '../components/TimerToggler';
 import Timer from '../components/Timer';
 import Settings from '../components/Settings';
+import Footer from '../components/Footer';
 
 // Assets
 import logo from '../public/assets/logo.svg';
@@ -36,7 +37,7 @@ export default function Home() {
         <Settings />
       </main>
 
-      <footer className='text-center'>This is footer</footer>
+      <Footer />
     </div>
   );
 }
