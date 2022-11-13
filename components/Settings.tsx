@@ -39,7 +39,7 @@ export default function Settings() {
 
       <Dialog
         open={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={handelOpen}
         className={`relative z-50 ${font}`}
       >
         {/* The backdrop, rendered as a fixed sibling to the panel container */}
@@ -66,7 +66,7 @@ export default function Settings() {
 
             <button
               type='button'
-              onClick={() => setIsOpen(false)}
+              onClick={handleClose}
               className='absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-red p-4 px-12 text-secondary'
             >
               Apply
