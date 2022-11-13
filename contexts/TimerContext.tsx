@@ -36,7 +36,7 @@ export function TimerProvider({ children }: { children: JSX.Element }) {
   const handleResetClick = () => setResetKey((prevKey: any) => prevKey + 1);
   const handleOnComplete = () => {
     handleResetClick();
-    handlePauseClick();
+    handleStopClick();
   };
 
   const value: TimerContextTypes = useMemo(

@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { RadioGroup } from '@headlessui/react';
+import useSound from 'use-sound';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
@@ -17,6 +18,7 @@ export default function TimerToggler() {
     handleResetClick,
     timerDuration,
   } = useContext(TimerContext);
+  const [playToggleSfx] = useSound('/sounds/toggle.mp3', { volume: 1 });
 
   const activeColor: string =
     // eslint-disable-next-line no-nested-ternary
@@ -44,7 +46,8 @@ export default function TimerToggler() {
           {({ checked }) => (
             <button
               type='button'
-              className={`flex w-full items-center justify-center rounded-full py-4 text-center md:text-body-1 ${
+              onClick={() => playToggleSfx()}
+              className={`flex w-full items-center justify-center rounded-full py-4 text-center md:text-base ${
                 checked ? `${activeColor} text-primary-dark` : `text-tertiary`
               }`}
             >

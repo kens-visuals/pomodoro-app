@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import useSound from 'use-sound';
 
 // Context
 import { TimerContext } from '../contexts/TimerContext';
@@ -13,6 +14,10 @@ export default function TimerDisplay({
 }) {
   const { isPlaying, handlePauseClick, handleResetClick } =
     useContext(TimerContext);
+  const [playActiveSfx] = useSound('/sounds/pop-down.mp3', { volume: 0.5 });
+  const [playOnSfc] = useSound('/sounds/pop-on.mp3', { volume: 0.5 });
+  const [playOffSfx] = useSound('/sounds/pop-off.mp3', { volume: 0.5 });
+  const [resetSfx] = useSound('/sounds/reset.mp3', { volume: 1 });
 
   return (
     <div className='flex flex-col items-center justify-center'>
@@ -20,6 +25,8 @@ export default function TimerDisplay({
         type='button'
         className='ml-4 text-h3 uppercase text-tertiary md:text-h2'
         onClick={handlePauseClick}
+        onMouseDown={() => playActiveSfx()}
+        onMouseUp={() => (isPlaying ? playOnSfc() : playOffSfx())}
       >
         {isPlaying ? 'Pause' : 'Start'}
       </button>
@@ -34,7 +41,10 @@ export default function TimerDisplay({
       <button
         type='button'
         className='ml-4 text-h3 uppercase text-red md:text-h2'
-        onClick={handleResetClick}
+        onClick={() => {
+          handleResetClick();
+          resetSfx();
+        }}
       >
         Reset
       </button>

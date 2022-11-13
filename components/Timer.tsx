@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import useSound from 'use-sound';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
@@ -15,6 +16,7 @@ export default function Timer() {
   const { color } = useContext(StyleContext);
   const { isPlaying, resetKey, handleOnComplete, timerDuration, timeOption } =
     useContext(TimerContext);
+  const [finishedSfx] = useSound('/sounds/finish.mp3', { volume: 1 });
 
   const activeColor: string =
     // eslint-disable-next-line no-nested-ternary
@@ -34,7 +36,10 @@ export default function Timer() {
           colors={`#${activeColor}`}
           trailColor='#161932'
           size={300}
-          onComplete={handleOnComplete}
+          onComplete={() => {
+            handleOnComplete();
+            finishedSfx();
+          }}
         >
           {({ remainingTime }) => (
             <TimerDisplay remainingTime={remainingTime} />
@@ -52,7 +57,10 @@ export default function Timer() {
           colors={`#${activeColor}`}
           trailColor='#161932'
           size={450}
-          onComplete={handleOnComplete}
+          onComplete={() => {
+            handleOnComplete();
+            finishedSfx();
+          }}
         >
           {({ remainingTime }) => (
             <TimerDisplay remainingTime={remainingTime} />

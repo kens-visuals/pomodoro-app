@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { RadioGroup } from '@headlessui/react';
+import useSound from 'use-sound';
 import Image from 'next/image';
 
 // Context
@@ -13,6 +14,7 @@ import { StyleItemTypes } from '../types/index';
 
 export default function FontsList() {
   const { color, setColor } = useContext(StyleContext);
+  const [playBiteSfx] = useSound('/sounds/bite.mp3', { volume: 1 });
 
   const colorOptions: StyleItemTypes[] = [
     { id: 1, value: 'red' },
@@ -34,6 +36,7 @@ export default function FontsList() {
             {({ checked }) => (
               <button
                 type='button'
+                onClick={() => playBiteSfx()}
                 className={`flex h-10 w-10 items-center justify-center rounded-full bg-${value}`}
               >
                 {checked && (
