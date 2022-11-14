@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import useSound from 'use-sound';
 import Image from 'next/image';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
+import { SoundsContext } from '../contexts/SoundsContext';
 
 // Assets
 import checkmark from '../public/assets/icon-checkmark.svg';
@@ -14,7 +14,7 @@ import { StyleItemTypes } from '../types/index';
 
 export default function FontsList() {
   const { color, setColor } = useContext(StyleContext);
-  const [playBiteSfx] = useSound('/sounds/bite.mp3', { volume: 1 });
+  const { playBiteSfx } = useContext(SoundsContext);
 
   const colorOptions: StyleItemTypes[] = [
     { id: 1, value: 'red' },
@@ -44,12 +44,7 @@ export default function FontsList() {
                 className={`flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300 hover:ring-1 hover:ring-tertiary hover:ring-offset-4 focus:rounded-full focus:outline-dashed focus:outline-primary-dark bg-${value}`}
               >
                 {checked && (
-                  <Image
-                    src={checkmark}
-                    alt='checkmark'
-                    height={25}
-                    width={25}
-                  />
+                  <Image src={checkmark} alt='checkmark' className='h-6 w-6' />
                 )}
               </button>
             )}

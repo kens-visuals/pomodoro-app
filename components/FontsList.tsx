@@ -1,16 +1,16 @@
 import { useContext } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import useSound from 'use-sound';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
+import { SoundsContext } from '../contexts/SoundsContext';
 
 // Types
 import { StyleItemTypes } from '../types/index';
 
 export default function FontsList() {
   const { font, setFont } = useContext(StyleContext);
-  const [playBiteSfx] = useSound('/sounds/bite.mp3', { volume: 1 });
+  const { playBiteSfx } = useContext(SoundsContext);
 
   const fontOptions: StyleItemTypes[] = [
     { id: 1, value: 'font-kumbh-sans' },

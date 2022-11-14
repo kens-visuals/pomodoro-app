@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import useSound from 'use-sound';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
 import { TimerContext } from '../contexts/TimerContext';
+import { SoundsContext } from '../contexts/SoundsContext';
 
 // Types
 import { TimeOptionTypes } from '../types/index';
@@ -18,7 +18,7 @@ export default function TimerToggler() {
     handleResetClick,
     timerDuration,
   } = useContext(TimerContext);
-  const [playToggleSfx] = useSound('/sounds/toggle.mp3', { volume: 1 });
+  const { playToggleSfx } = useContext(SoundsContext);
 
   const activeColor: string =
     // eslint-disable-next-line no-nested-ternary

@@ -3,6 +3,7 @@ import { useContext, ChangeEvent } from 'react';
 // Contexts
 import { TimerContext } from '../contexts/TimerContext';
 import { StyleContext } from '../contexts/StyleContext';
+import { SoundsContext } from '../contexts/SoundsContext';
 
 // Types
 import { TimeOptionTypes } from '../types/index';
@@ -10,6 +11,7 @@ import { TimeOptionTypes } from '../types/index';
 export default function TimeInputs() {
   const { font } = useContext(StyleContext);
   const { timerDuration, setTimerDuration } = useContext(TimerContext);
+  const { playOnSfx } = useContext(SoundsContext);
 
   const handleTimerDurationChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -20,6 +22,8 @@ export default function TimeInputs() {
       ...prevState,
       [name]: result,
     }));
+
+    playOnSfx();
   };
 
   const timeOptions: TimeOptionTypes[] = [

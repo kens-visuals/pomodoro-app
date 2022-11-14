@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import useSound from 'use-sound';
 
 // Context
 import { TimerContext } from '../contexts/TimerContext';
+import { SoundsContext } from '../contexts/SoundsContext';
 
 // Utils
 import { convertSecondsToMinutes } from '../utils/helpers';
@@ -14,10 +14,8 @@ export default function TimerDisplay({
 }) {
   const { isPlaying, handlePauseClick, handleResetClick } =
     useContext(TimerContext);
-  const [playActiveSfx] = useSound('/sounds/pop-down.mp3', { volume: 0.25 });
-  const [playOnSfc] = useSound('/sounds/pop-on.mp3', { volume: 0.25 });
-  const [playOffSfx] = useSound('/sounds/pop-off.mp3', { volume: 0.25 });
-  const [resetSfx] = useSound('/sounds/reset.mp3', { volume: 1 });
+  const { playActiveSfx, playPopOnSfc, playPopOffSfx, resetSfx } =
+    useContext(SoundsContext);
 
   return (
     <div className='flex flex-col items-center justify-center'>
@@ -27,10 +25,10 @@ export default function TimerDisplay({
         onClick={handlePauseClick}
         onKeyDown={(e) => e.key === 'Enter' && playActiveSfx()}
         onKeyUp={(e) =>
-          e.key === 'Enter' && (isPlaying ? playOnSfc() : playOffSfx())
+          e.key === 'Enter' && (isPlaying ? playPopOnSfc() : playPopOffSfx())
         }
         onMouseDown={() => playActiveSfx()}
-        onMouseUp={() => (isPlaying ? playOnSfc() : playOffSfx())}
+        onMouseUp={() => (isPlaying ? playPopOnSfc() : playPopOffSfx())}
       >
         {isPlaying ? 'Pause' : 'Start'}
       </button>

@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react';
 import { Dialog } from '@headlessui/react';
-import useSound from 'use-sound';
 import Image from 'next/image';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
+import { SoundsContext } from '../contexts/SoundsContext';
 
 // Components
 import TimeInputs from './TimeInputs';
@@ -17,33 +17,41 @@ import close from '../public/assets/icon-close.svg';
 
 export default function Settings() {
   const { font } = useContext(StyleContext);
+  const { volume, setVolume, playSwitchOnSfx, playSwitchOffSfx } =
+    useContext(SoundsContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [playOnSfx] = useSound('/sounds/switch-on.mp3');
-  const [playOffSfx] = useSound('/sounds/switch-off.mp3');
 
   const handelOpen = () => {
-    playOnSfx();
+    playSwitchOnSfx();
     setIsOpen(true);
   };
 
   const handleClose = () => {
-    playOffSfx();
+    playSwitchOffSfx();
     setIsOpen(false);
   };
 
   return (
     <>
-      <button
-        type='button'
-        onClick={handelOpen}
-        className='mt-8 focus:rounded-full focus:outline-dashed focus:outline-tertiary'
-      >
-        <Image src={settings} alt='settings' />
-      </button>
+      <div>
+        <button
+          type='button'
+          onClick={handelOpen}
+          className='mt-8 focus:rounded-full focus:outline-dashed focus:outline-tertiary'
+        >
+          <Image src={settings} alt='settings' />
+        </button>
+        <button
+          type='button'
+          onClick={() => (volume === 0 ? setVolume(1) : setVolume(0))}
+        >
+          Mute
+        </button>
+      </div>
 
       <Dialog
         open={isOpen}
-        onClose={handelOpen}
+        onClose={handleClose}
         className={`relative z-50 ${font}`}
       >
         {/* The backdrop, rendered as a fixed sibling to the panel container */}

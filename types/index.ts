@@ -34,3 +34,17 @@ export interface TimerContextTypes {
   handleResetClick: () => void;
   handleOnComplete: () => void;
 }
+
+export interface SoundsContextTypes {
+  volume: number;
+  setVolume: (volume: number) => void;
+  playBiteSfx: () => void;
+  playSwitchOnSfx: () => void;
+  playSwitchOffSfx: () => void;
+  finishedSfx: () => void;
+  playActiveSfx: () => void;
+  playPopOnSfc: () => void;
+  playPopOffSfx: () => void;
+  resetSfx: () => void;
+  playToggleSfx: () => void;
+}
