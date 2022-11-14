@@ -28,6 +28,8 @@ export default function Home() {
       </Head>
 
       <main className='my-8 mx-auto flex w-[88vw] max-w-lg flex-col items-center md:my-12 md:justify-between'>
+        <h1 className='sr-only'>Pomodoro</h1>
+
         <Image src={logo} alt='pomodoro' />
 
         <TimerToggler />

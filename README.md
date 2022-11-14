@@ -38,7 +38,7 @@ Challenges added by me:
 ### Links
 
 - Live Site URL: [https://pomodoro-app-mu-seven.vercel.app/](https://pomodoro-app-mu-seven.vercel.app/)
-- Solution URL: [TO_BE_UPDATED](TO_BE_UPDATED)
+- Solution URL: [https://www.frontendmentor.io/solutions/pomodoro-pwa-built-w-nextjs-typescript-tailwind-and-framer-motion-OByffa8eQw](https://www.frontendmentor.io/solutions/pomodoro-pwa-built-w-nextjs-typescript-tailwind-and-framer-motion-OByffa8eQw)
 
 ## My process
 
