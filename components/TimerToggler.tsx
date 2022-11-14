@@ -42,12 +42,16 @@ export default function TimerToggler() {
       className='m-11 grid w-full grid-cols-3 items-center justify-between gap-4 rounded-full bg-primary-dark p-2 text-body-2 tracking-wide'
     >
       {timeOptions.map(({ id, name, value }) => (
-        <RadioGroup.Option value={value} key={id} className='w-full'>
+        <RadioGroup.Option
+          value={value}
+          key={id}
+          className='w-full focus:rounded-full focus:outline-dashed focus:outline-tertiary'
+        >
           {({ checked }) => (
             <button
               type='button'
               onClick={() => playToggleSfx()}
-              className={`flex w-full items-center justify-center rounded-full py-4 text-center md:text-base ${
+              className={`flex w-full items-center justify-center rounded-full py-4 text-center focus:rounded-full focus:outline-dashed focus:outline-tertiary md:text-base ${
                 checked ? `${activeColor} text-primary-dark` : `text-tertiary`
               }`}
             >

@@ -33,7 +33,11 @@ export default function Settings() {
 
   return (
     <>
-      <button type='button' onClick={handelOpen} className='mt-8'>
+      <button
+        type='button'
+        onClick={handelOpen}
+        className='mt-8 focus:rounded-full focus:outline-dashed focus:outline-tertiary'
+      >
         <Image src={settings} alt='settings' />
       </button>
 
@@ -51,7 +55,11 @@ export default function Settings() {
           <Dialog.Panel className='relative mx-auto w-[88vw] max-w-lg rounded-3xl bg-white pb-8'>
             <div className='flex items-center justify-between p-6'>
               <Dialog.Title className='text-h2'>Setting</Dialog.Title>
-              <button type='button' onClick={handleClose}>
+              <button
+                type='button'
+                onClick={handleClose}
+                className='focus:p-1 focus:outline-dashed focus:outline-primary-dark'
+              >
                 <Image src={close} alt='close' />
               </button>
             </div>
@@ -67,7 +75,7 @@ export default function Settings() {
             <button
               type='button'
               onClick={handleClose}
-              className='absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-red p-4 px-12 text-secondary'
+              className='absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-red p-4 px-12 text-secondary transition-all duration-300 hover:scale-90 focus:rounded-full focus:outline-dashed focus:outline-primary'
             >
               Apply
             </button>

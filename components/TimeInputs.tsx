@@ -55,7 +55,7 @@ export default function TimeInputs() {
         id='timer-duration'
         value={value}
         onChange={(e) => handleTimerDurationChange(e)}
-        className='relative w-36 appearance-none rounded-lg bg-secondary-dark p-2'
+        className='relative w-36 appearance-none rounded-lg bg-secondary-dark p-2 focus:outline-dashed focus:outline-primary-dark'
       />
     </label>
   ));

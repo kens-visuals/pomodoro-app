@@ -28,12 +28,16 @@ export default function FontsList() {
         className='flex items-center justify-end gap-4'
       >
         {fontOptions.map(({ id, value }) => (
-          <RadioGroup.Option value={value} key={id}>
+          <RadioGroup.Option
+            value={value}
+            key={id}
+            className='focus:rounded-full focus:outline-dashed focus:outline-primary-dark'
+          >
             {({ checked }) => (
               <button
                 type='button'
                 onClick={() => playBiteSfx()}
-                className={`flex h-10 w-10 items-center justify-center rounded-full ${value} ${
+                className={`flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300 hover:ring-1 hover:ring-tertiary hover:ring-offset-4 focus:rounded-full focus:outline-dashed focus:outline-primary-dark ${value} ${
                   checked
                     ? 'bg-primary-dark text-tertiary'
                     : 'bg-secondary-dark'
