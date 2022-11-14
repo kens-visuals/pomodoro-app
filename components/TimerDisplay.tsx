@@ -14,9 +14,9 @@ export default function TimerDisplay({
 }) {
   const { isPlaying, handlePauseClick, handleResetClick } =
     useContext(TimerContext);
-  const [playActiveSfx] = useSound('/sounds/pop-down.mp3', { volume: 0.5 });
-  const [playOnSfc] = useSound('/sounds/pop-on.mp3', { volume: 0.5 });
-  const [playOffSfx] = useSound('/sounds/pop-off.mp3', { volume: 0.5 });
+  const [playActiveSfx] = useSound('/sounds/pop-down.mp3', { volume: 0.25 });
+  const [playOnSfc] = useSound('/sounds/pop-on.mp3', { volume: 0.25 });
+  const [playOffSfx] = useSound('/sounds/pop-off.mp3', { volume: 0.25 });
   const [resetSfx] = useSound('/sounds/reset.mp3', { volume: 1 });
 
   return (

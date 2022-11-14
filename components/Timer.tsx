@@ -48,7 +48,7 @@ export default function Timer() {
       </div>
 
       {/* Tablet and Desktop Version */}
-      <div className='hidden md:flex md:h-full md:w-full md:items-center md:justify-center md:rounded-full md:bg-primary-dark'>
+      <div className='hidden md:flex md:items-center md:justify-center md:rounded-full md:bg-primary-dark'>
         <CountdownCircleTimer
           key={resetKey}
           rotation='counterclockwise'

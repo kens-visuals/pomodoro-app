@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className='font-roboto my-4 text-center text-[.6rem] text-tertiary md:text-xs'>
+    <footer className='font-roboto mb-4 text-center text-[.6rem] text-tertiary md:text-xs'>
       Coded by{' '}
       <a
         href='https://www.ken.engineer/'
