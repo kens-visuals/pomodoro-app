@@ -12,8 +12,10 @@ import FontsList from './FontsList';
 import ColorsList from './ColorsList';
 
 // Assets
-import settings from '../public/assets/icon-settings.svg';
-import close from '../public/assets/icon-close.svg';
+import settingsIcon from '../public/assets/icon-settings.svg';
+import closeIcon from '../public/assets/icon-close.svg';
+import volumeIcon from '../public/assets/icon-volume.svg';
+import muteIcon from '../public/assets/icon-mute.svg';
 
 export default function Settings() {
   const { font } = useContext(StyleContext);
@@ -33,19 +35,23 @@ export default function Settings() {
 
   return (
     <>
-      <div>
+      <div className='mt-8 flex items-center justify-center gap-4'>
         <button
           type='button'
           onClick={handelOpen}
-          className='mt-8 focus:rounded-full focus:outline-dashed focus:outline-tertiary'
+          className='focus:rounded-full focus:outline-dashed focus:outline-tertiary'
         >
-          <Image src={settings} alt='settings' />
+          <Image src={settingsIcon} alt='settings' />
         </button>
         <button
           type='button'
           onClick={() => (volume === 0 ? setVolume(1) : setVolume(0))}
         >
-          Mute
+          {volume ? (
+            <Image src={volumeIcon} alt='volume' />
+          ) : (
+            <Image src={muteIcon} alt='mute' />
+          )}
         </button>
       </div>
 
@@ -68,7 +74,7 @@ export default function Settings() {
                 onClick={handleClose}
                 className='focus:p-1 focus:outline-dashed focus:outline-primary-dark'
               >
-                <Image src={close} alt='close' />
+                <Image src={closeIcon} alt='close' />
               </button>
             </div>
 
