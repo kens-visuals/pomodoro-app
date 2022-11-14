@@ -16,6 +16,7 @@ export const SoundsContext = createContext<SoundsContextTypes>({
   playPopOffSfx: () => null,
   resetSfx: () => null,
   playToggleSfx: () => null,
+  enableSfx: () => null,
 });
 
 export function SoundsProvider({ children }: { children: JSX.Element }) {
@@ -29,6 +30,7 @@ export function SoundsProvider({ children }: { children: JSX.Element }) {
   const [playPopOffSfx] = useSound('/sounds/pop-off.mp3', { volume });
   const [resetSfx] = useSound('/sounds/reset.mp3', { volume });
   const [playToggleSfx] = useSound('/sounds/toggle.mp3', { volume });
+  const [enableSfx] = useSound('/sounds/disable-enable.mp3', { volume });
 
   const value = useMemo(
     () => ({
@@ -43,6 +45,7 @@ export function SoundsProvider({ children }: { children: JSX.Element }) {
       playPopOffSfx,
       resetSfx,
       playToggleSfx,
+      enableSfx,
     }),
     [volume]
   );

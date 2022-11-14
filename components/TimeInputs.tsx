@@ -11,7 +11,7 @@ import { TimeOptionTypes } from '../types/index';
 export default function TimeInputs() {
   const { font } = useContext(StyleContext);
   const { timerDuration, setTimerDuration } = useContext(TimerContext);
-  const { playOnSfx } = useContext(SoundsContext);
+  const { playSwitchOnSfx } = useContext(SoundsContext);
 
   const handleTimerDurationChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,7 +23,7 @@ export default function TimeInputs() {
       [name]: result,
     }));
 
-    playOnSfx();
+    playSwitchOnSfx();
   };
 
   const timeOptions: TimeOptionTypes[] = [

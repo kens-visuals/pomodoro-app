@@ -47,4 +47,5 @@ export interface SoundsContextTypes {
   playPopOffSfx: () => void;
   resetSfx: () => void;
   playToggleSfx: () => void;
+  enableSfx: () => void;
 }

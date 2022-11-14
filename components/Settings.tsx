@@ -19,7 +19,7 @@ import muteIcon from '../public/assets/icon-mute.svg';
 
 export default function Settings() {
   const { font } = useContext(StyleContext);
-  const { volume, setVolume, playSwitchOnSfx, playSwitchOffSfx } =
+  const { volume, setVolume, playSwitchOnSfx, playSwitchOffSfx, enableSfx } =
     useContext(SoundsContext);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,6 +31,16 @@ export default function Settings() {
   const handleClose = () => {
     playSwitchOffSfx();
     setIsOpen(false);
+  };
+
+  const handleVolumeOn = () => {
+    setVolume(1);
+    enableSfx();
+  };
+
+  const handleVolumeOff = () => {
+    setVolume(0);
+    enableSfx();
   };
 
   return (
@@ -45,7 +55,8 @@ export default function Settings() {
         </button>
         <button
           type='button'
-          onClick={() => (volume === 0 ? setVolume(1) : setVolume(0))}
+          onClick={() => (volume === 0 ? handleVolumeOn() : handleVolumeOff())}
+          className='focus:rounded-full focus:outline-dashed focus:outline-tertiary'
         >
           {volume ? (
             <Image src={volumeIcon} alt='volume' />
