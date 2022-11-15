@@ -23,7 +23,10 @@ export default function Document() {
         />
 
         {/* <!-- Facebook Meta Tags --> */}
-        <meta property='og:url' content='https://www.ken.engineer/' />
+        <meta
+          property='og:url'
+          content='https://pomodoro-app-mu-seven.vercel.app/'
+        />
         <meta property='og:title' content='Pomodoro App' />
         <meta
           property='og:description'
@@ -36,9 +39,12 @@ export default function Document() {
 
         {/* <!-- Twitter Meta Tags --> */}
         <meta name='twitter:card' content='summary_large_image' />
-        {/* NOTE: change content and URL later */}
-        <meta property='twitter:domain' content='ken.engineer' />
-        <meta property='twitter:url' content='https://www.ken.engineer/' />
+
+        <meta property='twitter:domain' content='Pomodoro App' />
+        <meta
+          property='twitter:url'
+          content='https://pomodoro-app-mu-seven.vercel.app/'
+        />
         <meta name='twitter:title' content='Pomodoro App' />
         <meta
           name='twitter:description'
