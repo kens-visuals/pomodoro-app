@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { Dialog } from '@headlessui/react';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 
 // Context
@@ -19,8 +20,14 @@ import muteIcon from '../public/assets/icon-mute.svg';
 
 export default function Settings() {
   const { font } = useContext(StyleContext);
-  const { volume, setVolume, playSwitchOnSfx, playSwitchOffSfx, enableSfx } =
-    useContext(SoundsContext);
+  const {
+    volume,
+    setVolume,
+    playSwitchOnSfx,
+    playSwitchOffSfx,
+    enableSfx,
+    disableSfx,
+  } = useContext(SoundsContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const handelOpen = () => {
@@ -40,7 +47,25 @@ export default function Settings() {
 
   const handleVolumeOff = () => {
     setVolume(0);
-    enableSfx();
+    disableSfx();
+  };
+
+  const groupVariants: Variants = {
+    initial: { opacity: 0, y: -10 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: 'easeIn',
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const childrenVariants: Variants = {
+    initial: { opacity: 0, y: -10 },
+    animate: { opacity: 1, y: 0 },
   };
 
   return (
@@ -55,10 +80,10 @@ export default function Settings() {
         </button>
         <button
           type='button'
-          onClick={() => (volume === 0 ? handleVolumeOn() : handleVolumeOff())}
+          onClick={() => (volume === 1 ? handleVolumeOff() : handleVolumeOn())}
           className='focus:rounded-full focus:outline-dashed focus:outline-tertiary'
         >
-          {volume ? (
+          {volume === 1 ? (
             <Image src={volumeIcon} alt='volume' />
           ) : (
             <Image src={muteIcon} alt='mute' />
@@ -75,10 +100,19 @@ export default function Settings() {
         <div className='fixed inset-0 bg-primary-dark/70' aria-hidden='true' />
 
         {/* Full-screen container to center the panel */}
-        <div className='fixed inset-0 flex items-center justify-center p-4'>
+
+        <motion.div
+          initial='initial'
+          animate='animate'
+          variants={groupVariants}
+          className='fixed inset-0 flex items-center justify-center p-4'
+        >
           {/* The actual dialog panel  */}
           <Dialog.Panel className='relative mx-auto w-[88vw] max-w-lg rounded-3xl bg-white pb-8'>
-            <div className='flex items-center justify-between p-6'>
+            <motion.div
+              variants={childrenVariants}
+              className='flex items-center justify-between p-6'
+            >
               <Dialog.Title className='text-h2'>Setting</Dialog.Title>
               <button
                 type='button'
@@ -87,15 +121,15 @@ export default function Settings() {
               >
                 <Image src={closeIcon} alt='close' />
               </button>
-            </div>
+            </motion.div>
 
             <div className='h-0.5 w-full bg-secondary-dark' />
 
-            <div className='p-6'>
+            <motion.div variants={childrenVariants} className='p-6'>
               <TimeInputs />
               <FontsList />
               <ColorsList />
-            </div>
+            </motion.div>
 
             <button
               type='button'
@@ -105,7 +139,7 @@ export default function Settings() {
               Apply
             </button>
           </Dialog.Panel>
-        </div>
+        </motion.div>
       </Dialog>
     </>
   );

@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { RadioGroup } from '@headlessui/react';
+import { motion, Variants } from 'framer-motion';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
@@ -35,31 +36,59 @@ export default function TimerToggler() {
     handleStopClick();
   }, [timerDuration, timeOption]);
 
+  const groupVariants: Variants = {
+    initial: { opacity: 0, y: -10 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: 'easeIn',
+        duration: 0.5,
+        delayChildren: 0.7,
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const buttonVariants: Variants = {
+    initial: { opacity: 0, y: -10 },
+    animate: { opacity: 1, y: 0 },
+  };
+
   return (
-    <RadioGroup
-      value={timeOption}
-      onChange={setTimeOption}
-      className='m-11 grid w-full grid-cols-3 items-center justify-between gap-4 rounded-full bg-primary-dark p-2 text-body-2 tracking-wide'
+    <motion.div
+      initial='initial'
+      animate='animate'
+      variants={groupVariants}
+      className='m-11 w-full'
     >
-      {timeOptions.map(({ id, name, value }) => (
-        <RadioGroup.Option
-          value={value}
-          key={id}
-          className='w-full focus:rounded-full focus:outline-dashed focus:outline-tertiary'
-        >
-          {({ checked }) => (
-            <button
-              type='button'
-              onClick={() => playToggleSfx()}
-              className={`flex w-full items-center justify-center rounded-full py-4 text-center focus:rounded-full focus:outline-dashed focus:outline-tertiary md:text-base ${
-                checked ? `${activeColor} text-primary-dark` : `text-tertiary`
-              }`}
-            >
-              {name}
-            </button>
-          )}
-        </RadioGroup.Option>
-      ))}
-    </RadioGroup>
+      <RadioGroup
+        value={timeOption}
+        onChange={setTimeOption}
+        className='grid  grid-cols-3 items-center justify-between gap-4 rounded-full bg-primary-dark p-2 text-body-2 tracking-wide'
+      >
+        {timeOptions.map(({ id, name, value }) => (
+          <RadioGroup.Option
+            value={value}
+            key={id}
+            className='w-full focus:rounded-full focus:outline-dashed focus:outline-tertiary'
+          >
+            {({ checked }) => (
+              <motion.button
+                type='button'
+                layout
+                variants={buttonVariants}
+                onClick={() => playToggleSfx()}
+                className={`flex w-full items-center justify-center rounded-full py-4 text-center transition-all duration-100 ease-in hover:text-secondary focus:rounded-full focus:outline-dashed focus:outline-tertiary md:text-base ${
+                  checked ? `${activeColor} text-primary-dark` : `text-tertiary`
+                }`}
+              >
+                {name}
+              </motion.button>
+            )}
+          </RadioGroup.Option>
+        ))}
+      </RadioGroup>
+    </motion.div>
   );
 }

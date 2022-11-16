@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { motion, Variants } from 'framer-motion';
 
 // Context
 import { StyleContext } from '../contexts/StyleContext';
@@ -24,8 +25,25 @@ export default function Timer() {
 
   const convertedDuration = convertMinutesToSeconds(+timerDuration[timeOption]);
 
+  const timerVariants: Variants = {
+    initial: { opacity: 0, y: -10 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: 'easeOut',
+        duration: 0.3,
+      },
+    },
+  };
+
   return (
-    <div className='my-12 flex aspect-square items-center justify-center rounded-full bg-primary-gradient p-4 shadow-primary-shadow md:p-6'>
+    <motion.div
+      initial='initial'
+      animate='animate'
+      variants={timerVariants}
+      className='my-12 flex aspect-square items-center justify-center rounded-full bg-primary-gradient p-4 shadow-primary-shadow md:p-6'
+    >
       {/* Mobile Version */}
       <div className='flex h-full w-full items-center justify-center rounded-full bg-primary-dark md:hidden'>
         <CountdownCircleTimer
@@ -67,6 +85,6 @@ export default function Timer() {
           )}
         </CountdownCircleTimer>
       </div>
-    </div>
+    </motion.div>
   );
 }
